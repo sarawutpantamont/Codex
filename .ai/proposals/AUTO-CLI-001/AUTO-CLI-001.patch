@@ -1,0 +1,35 @@
+diff --git a/tools/install_claude_cli.sh b/tools/install_claude_cli.sh
+new file mode 100755
+--- /dev/null
++++ b/tools/install_claude_cli.sh
+@@ -0,0 +1,10 @@
++#!/usr/bin/env bash
++set -euo pipefail
++# Run as the Codex Cloud environment install script with registry network access.
++root=/workspace/.claude-runtime
++npm install --prefix "$root" --no-audit --no-fund @anthropic-ai/claude-code@2.1.314
++bin="$root/node_modules/@anthropic-ai/claude-code-linux-x64/claude"
++test -x "$bin"
++"$bin" --version
++# The reviewer resolves this private, workspace-local executable when claude is absent from PATH.
++# Authentication is supplied separately by the personal vault.
+diff --git a/tools/claude_review.py b/tools/claude_review.py
+--- a/tools/claude_review.py
++++ b/tools/claude_review.py
+@@ -2,6 +2,7 @@
+ import argparse
+ import json
++import shutil
+ import subprocess
+ import tempfile
+ from pathlib import Path
+@@ -17,6 +18,10 @@
+ def review(role, packet, binary='claude', runner=subprocess.run):
+     if role not in ROLES:
+         raise ValueError('Unknown role')
++    if binary == 'claude' and shutil.which('claude') is None:
++        installed = Path('/workspace/.claude-runtime/node_modules/@anthropic-ai/claude-code-linux-x64/claude')
++        if installed.is_file():
++            binary = str(installed)
+     if len(packet.encode('utf-8')) > 65536:
+         raise ValueError('Evidence packet exceeds 64 KiB; narrow the task')
