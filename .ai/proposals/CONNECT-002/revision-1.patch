@@ -1,0 +1,35 @@
+diff --git a/tools/claude_review.py b/tools/claude_review.py
+--- a/tools/claude_review.py
++++ b/tools/claude_review.py
+@@ -33,8 +33,13 @@
+         if result.returncode:
+             return {'status':'fallback_required','reason':'Claude execution unavailable; use isolated approved Codex reviewer'}
+         data = json.loads(result.stdout)
+-        if data.get('is_error'):
++        if not isinstance(data, dict) or data.get('is_error'):
+             return {'status':'fallback_required','reason':'Claude returned an error; use isolated approved Codex reviewer'}
++        models = data.get('modelUsage')
++        if not isinstance(models, dict) or set(models) != {'claude-opus-5-5'}:
++            return {'status':'fallback_required','reason':'Requested model not verified; use isolated approved Codex reviewer'}
++        if not isinstance(data.get('result'), str) or not data['result'].strip():
++            return {'status':'fallback_required','reason':'Missing review content; use isolated approved Codex reviewer'}
+         return {'status':'review_returned','requested_model':'claude-opus-5-5',
+                 'observed_models':list(data.get('modelUsage',{})),
+                 'result':data.get('result'), 'usage':data.get('usage'),
+diff --git a/tests/test_claude_review.py b/tests/test_claude_review.py
+--- a/tests/test_claude_review.py
++++ b/tests/test_claude_review.py
+@@ -21,6 +21,13 @@
+     def test_bad_json_fallback(self):
+         def fake(cmd,**kw):return subprocess.CompletedProcess(cmd,0,'invalid')
+         self.assertEqual(m.review('judge','synthetic',runner=fake)['status'],'fallback_required')
++    def test_invalid_shapes_fallback(self):
++        for payload in ('[]','null','"text"','{"modelUsage":null}',
++                        '{"modelUsage":{"other-model":{}},"result":"passed"}',
++                        '{"modelUsage":{"claude-opus-5-5":{}},"result":null}'):
++            with self.subTest(payload=payload):
++                def fake(cmd,**kw):return subprocess.CompletedProcess(cmd,0,payload)
++                self.assertEqual(m.review('auditor','synthetic',runner=fake)['status'],'fallback_required')
+     def test_packet_limit(self):
+         with self.assertRaises(ValueError):m.review('support','x'*65537)
+ if __name__=='__main__':unittest.main()

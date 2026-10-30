@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "id": "CONNECT-002",
+  "approved_at_recorded": "2026-10-30T08:41:37.916984+00:00",
+  "approval_source": "explicit user chat approval to apply CONNECT-002",
+  "approved_patch_sha256": "34b1ab279ae644f7bc430a6b473bc2cbcd41c4e6f4e1d3a0465043b03ffcf33b",
+  "applied": "local working files only",
+  "audit_decision": "revision_required",
+  "pending_revision_patch": "revision-1.patch",
+  "pending_revision_sha256": "5d791fab267a0e7cf92b5fed11484c7c7cca75390c53683bf094db4bfef43d1c",
+  "merge_authorization": false,
+  "revision_1": {
+    "approved": true,
+    "source": "explicit user chat: Approve connect r1",
+    "patch_sha256": "5d791fab267a0e7cf92b5fed11484c7c7cca75390c53683bf094db4bfef43d1c",
+    "applied_at": "2026-10-30T10:39:28.902596+00:00"
+  }
+}
