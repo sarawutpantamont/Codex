@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "id": "CONNECT-002",
-  "status": "approved_patch_applied_locally_revision_pending",
+  "status": "approved_revision_applied_audited",
   "cli_version": "2.1.314",
   "authentication": "token_exchange_refused_by_runtime_proxy",
   "branch_protection": "admin_write_unavailable",
@@ -13,8 +13,8 @@
     "ruleset JSON parsed",
     "validate check app 15368 verified from live GitHub check runs"
   ],
-  "next_action": "Approve revision-1.patch, apply and re-audit; enable required Claude network access through environment settings and restart browser login; repository owner imports main ruleset. No certification/commit of unverified adapter.",
+  "next_action": "Check PR CI; configure Claude network then fresh login; owner imports main ruleset. User controls merges.",
   "privacy": "No login URL, auth code, credential path or secret stored here.",
   "network_policy": "enforced allowlist has no Claude/Anthropic hosts",
-  "implementation_audit": "revision_required: malformed JSON shapes can bypass fallback"
+  "implementation_audit": "passed: 14 tests and exact live bytes verified"
 }

@@ -8,5 +8,11 @@
   "audit_decision": "revision_required",
   "pending_revision_patch": "revision-1.patch",
   "pending_revision_sha256": "5d791fab267a0e7cf92b5fed11484c7c7cca75390c53683bf094db4bfef43d1c",
-  "merge_authorization": false
+  "merge_authorization": false,
+  "revision_1": {
+    "approved": true,
+    "source": "explicit user chat: Approve connect r1",
+    "patch_sha256": "5d791fab267a0e7cf92b5fed11484c7c7cca75390c53683bf094db4bfef43d1c",
+    "applied_at": "2026-10-30T10:39:28.902596+00:00"
+  }
 }
