@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "id": "TASK-001",
-  "status": "audited",
+  "status": "resolved",
   "goal": "Install the approved reusable orchestrator template",
   "acceptance_criteria": [
     "CLI validation and regression checks pass",
@@ -36,7 +36,7 @@
     }
   ],
   "fix_review_cycles": 1,
-  "next_action": "Publish audited content and open draft PR; user decides merge",
+  "next_action": "Resolved after PR #1 and PR #2 merged; verified on main commit e70c731",
   "restart_condition": null,
   "approval": {
     "source": "explicit_user_chat",
@@ -46,6 +46,19 @@
     "decision": "passed",
     "model": "Codex GPT-6.1 Sol",
     "manifest_sha256": "58de016faf9c3d413509696053b7e361009f840798a86377e8e97ba44f590e16"
+  },
+  "post_merge_verification": {
+    "pull_requests": [1, 2],
+    "verified_main_commit": "e70c73156abfb831a384812f8eb27a945e7524e6",
+    "validate": "passed",
+    "tests": "14/14 passed",
+    "results": [
+      "Ruleset and GitHub Checks verified",
+      "Claude successfully called a real model in the tested Cloud task"
+    ],
+    "remaining_limitations": [
+      "CLI automatic installation in a new task remains unverified"
+    ]
   },
   "record_type": "task",
   "created_at": "2026-10-30T08:23:15.044938+00:00",

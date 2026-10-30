@@ -2,7 +2,7 @@
   "schema_version": 1,
   "task_id": "TASK-001",
   "checkpoint": ".ai/cases/CHECKPOINT-TASK-001.json",
-  "next_action": "Inspect draft PR and its actual head; user decides merge. Run validate/tests/resume in a fresh checkout.",
+  "next_action": "TASK-001 resolved after PR #1 and PR #2 merged; verified main commit e70c731; CLI automatic installation in a new task remains unverified",
   "created_at": "2026-10-30T08:23:15.044938+00:00",
   "updated_at": "2026-10-30T08:23:15.044938+00:00"
 }
