@@ -16,6 +16,9 @@ class StateTests(unittest.TestCase):
         self.root = Path(self.tmp.name)
         for p in ['.ai/project.json','.ai/state/active.json','.ai/cases/TASK-001.json']:
             m.save(self.root/p, m.load(SOURCE/p))
+        task = m.load(self.root/'.ai/cases/TASK-001.json')
+        task.update(status='checking', fix_review_cycles=0)
+        m.save(self.root/'.ai/cases/TASK-001.json', task)
     def test_domain_task_ids_are_validated(self):
         t=m.load(self.root/'.ai/cases/TASK-001.json');t['id']='IMPORT-001';t['dependencies']=['IMPORT-001']
         m.save(self.root/'.ai/cases/IMPORT-001.json',t)

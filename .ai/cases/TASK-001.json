@@ -45,7 +45,7 @@
   "audit": {
     "decision": "passed",
     "model": "Codex GPT-6.1 Sol",
-    "manifest_sha256": "29f156a3b510809ed6d509a7ed426718ab9dc55791223f6167fd8d54949d7151"
+    "manifest_sha256": "58de016faf9c3d413509696053b7e361009f840798a86377e8e97ba44f590e16"
   },
   "record_type": "task",
   "created_at": "2026-10-30T08:23:15.044938+00:00",

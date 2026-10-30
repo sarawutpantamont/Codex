@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "id": "LESSON-002",
+  "status": "verified",
+  "cause_verified": "Tests seeded fixtures from mutable live task status and revision count; publication changed those values.",
+  "fix": "Normalize synthetic fixture lifecycle fields independently of live state.",
+  "verification": "Regression suite rerun after live task became audited with one revision; remote CI retest pending.",
+  "applicability": "Tests that reuse mutable workflow records",
+  "proposal_id": null,
+  "prevention_status": "Test correction only; no new rule installed."
+}

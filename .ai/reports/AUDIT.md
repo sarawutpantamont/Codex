@@ -2,7 +2,7 @@
 
 Actual reviewer: Codex GPT-6.1 Sol, independent fallback; no Claude review claimed.
 
-Revision 1 reviewed. Certification covers the 25 implementation and approved-input files listed in template-audit-final-manifest.txt; excludes task/state/report records. Manifest SHA256: 29f156a3b510809ed6d509a7ed426718ab9dc55791223f6167fd8d54949d7151.
+Revision 1 reviewed. Certification covers the 25 implementation and approved-input files listed in template-audit-final-manifest.txt; excludes task/state/report records. Manifest SHA256: 58de016faf9c3d413509696053b7e361009f840798a86377e8e97ba44f590e16.
 
 ## Diff Verification Log
 
@@ -21,3 +21,11 @@ Limits: this is a user-initiated procedural template, not tamper-proof authoriza
 Deployment acceptance remains pending: no independent remote PR/branch protection/CI verification in this audit; parent reports a different remote bootstrap baseline, so deployment must preserve audited implementation bytes rather than push unrelated local history. No GitHub merge authorized or performed. Report is implementation certification only, not a production-readiness claim.
 
 Approved-input record privacy: INITIAL-INSTALL.json contains opaque input filenames and hashes, with no identifying local paths or source text. Its chat-approval assertion is not independently cryptographically authenticated. README correctly labels official links as unfetched further reading.
+
+## Distinct fixture isolation correction
+
+Decision: passed. Independently inspected the three-line tests/test_orchestrator.py setUp correction: temporary synthetic task status/count are normalized to checking/0. Live task remains audited/1. No production code changed relative to the preceding manifest.
+
+Diff Verification Log: before, synthetic tests inherited live workflow progress and three checks could fail; after, temporary fixture starts at explicit synthetic status/count; verification, all 9 unit tests pass against current audited/1 live task, and CLI validate passes. This verifies the local corrected implementation, not the pending remote CI rerun.
+
+Parent supplies draft PR https://github.com/sarawutpantamont/Codex/pull/1; its updated head and CI were not independently inspected here. No merge performed.
