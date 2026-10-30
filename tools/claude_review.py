@@ -1,6 +1,7 @@
 """Proposed no-tool Claude reviewer. Authenticate separately; never pass credentials as arguments."""
 import argparse
 import json
+import shutil
 import subprocess
 import tempfile
 from pathlib import Path
@@ -16,6 +17,10 @@ ROLES = {
 def review(role, packet, binary='claude', runner=subprocess.run):
     if role not in ROLES:
         raise ValueError('Unknown role')
+    if binary == 'claude' and shutil.which('claude') is None:
+        installed = Path('/workspace/.claude-runtime/node_modules/@anthropic-ai/claude-code-linux-x64/claude')
+        if installed.is_file():
+            binary = str(installed)
     if len(packet.encode('utf-8')) > 65536:
         raise ValueError('Evidence packet exceeds 64 KiB; narrow the task')
     prompt = ('Senior independent '+role+'. '+ROLES[role]+

@@ -3,15 +3,17 @@
   "record_type": "checkpoint",
   "id": "CHECKPOINT-TASK-001",
   "task_id": "TASK-001",
-  "head": "e70c73156abfb831a384812f8eb27a945e7524e6",
-  "branch": "codex/main-checkout",
+  "head": "36a37258a9baa48ae70925fbcbda6d20952ab311",
+  "branch": "codex/auto-cli-001-implementation",
   "verified_main_commit": "e70c73156abfb831a384812f8eb27a945e7524e6",
   "dirty_paths": [
-    ".ai/cases/TASK-001.json",
-    ".ai/cases/CHECKPOINT-TASK-001.json",
-    ".ai/state/active.json"
+    "M .ai/cases/CHECKPOINT-TASK-001.json",
+    " A .ai/proposals/AUTO-CLI-001/APPROVAL.json",
+    " M .ai/state/active.json",
+    " M tools/claude_review.py",
+    " A tools/install_claude_cli.sh"
   ],
-  "updated_at": "2026-10-30T08:24:21.695128+00:00",
+  "updated_at": "2026-10-30T15:59:21.285870+00:00",
   "checks": [
     {
       "command": "python tools/orchestrator.py validate",
@@ -24,11 +26,12 @@
     }
   ],
   "audit_ref": ".ai/reports/AUDIT.md",
-  "next_action": "Resolved after PR #1 and PR #2 merged; verified main separately from checkout snapshot",
+  "next_action": "AUTO-CLI-001 approved; audit exact implementation diff, then commit and open draft PR. Cloud Install script and fresh-task verification remain pending.",
   "limitations": [
     "Ruleset and GitHub Checks verified",
     "Claude successfully called a real model in the tested Cloud task",
-    "CLI automatic installation in a new task remains unverified",
-    "head and branch remain the actual checkout snapshot; verified_main_commit records main independently"
-  ]
+    "head and branch remain the actual checkout snapshot; verified_main_commit records main independently",
+    "AUTO-CLI-001 repository patch pending audit; Cloud Install script not yet configured or tested in a fresh task."
+  ],
+  "approval_ref": ".ai/proposals/AUTO-CLI-001/APPROVAL.json"
 }
