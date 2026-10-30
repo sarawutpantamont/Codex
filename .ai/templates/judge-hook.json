@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "id": "EXAMPLE-JUDGE-HOOK",
+  "status": "template",
+  "support_ref": null,
+  "opposition_ref": null,
+  "decisions": null,
+  "unresolved": null,
+  "created_at": null,
+  "updated_at": null
+}

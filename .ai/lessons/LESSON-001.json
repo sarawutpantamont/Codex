@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "id": "LESSON-001",
+  "status": "verified",
+  "cause_verified": "Filename-prefix filtering omitted valid domain task IDs.",
+  "fix": "Select task records by record_type.",
+  "verification": "Two non-TASK regression tests plus independent audit.",
+  "applicability": "Validators for heterogeneous record directories",
+  "proposal_id": null,
+  "prevention_status": "Regression tests installed under initial installation approval; future procedure changes still need explicit chat approval."
+}

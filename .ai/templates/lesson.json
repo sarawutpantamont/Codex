@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "id": "EXAMPLE-LESSON",
+  "status": "template",
+  "cause_verified": null,
+  "fix": null,
+  "verification": null,
+  "applicability": null,
+  "proposal_id": null,
+  "prevention_status": null,
+  "created_at": null,
+  "updated_at": null
+}

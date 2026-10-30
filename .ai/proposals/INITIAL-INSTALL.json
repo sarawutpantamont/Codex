@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "id": "INITIAL-INSTALL",
+  "status": "approved",
+  "source": "explicit user approval in this chat",
+  "scope": "Build approved uploaded design on GitHub",
+  "approved_inputs": {
+    "DESIGN.md": "2ced040f2f2e27ca17683669c33347c313086d150d0ca1fb7134e4257d7526e5",
+    "record-template.json": "b64a62ada7c8ae79383bfbaa9cbbd066426c1a63a3709cdb95975cb7489b43c1"
+  },
+  "limitations": "Recorded approval is not cryptographic proof; no approval to merge main."
+}

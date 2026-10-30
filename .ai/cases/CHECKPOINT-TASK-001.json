@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "record_type": "checkpoint",
+  "id": "CHECKPOINT-TASK-001",
+  "task_id": "TASK-001",
+  "head": "a2b449acfdf0af9a0e2d8db52dbb79e15b8fa52b",
+  "branch": "codex/orchestrator-template",
+  "dirty_paths": [],
+  "updated_at": "2026-10-30T08:24:21.695128+00:00",
+  "checks": [
+    {
+      "command": "python tools/orchestrator.py validate",
+      "result": "passed"
+    },
+    {
+      "command": "python -m unittest discover -s tests -v",
+      "result": "9 passed"
+    }
+  ],
+  "audit_ref": ".ai/reports/AUDIT.md",
+  "next_action": "Inspect draft PR and its actual head; user decides merge. Run validate/tests/resume in a fresh checkout.",
+  "limitations": [
+    "head records pre-publication base; publication changes HEAD and must be reconciled",
+    "Claude integration and branch protections are not configured",
+    "Remote Actions status is not yet confirmed"
+  ]
+}

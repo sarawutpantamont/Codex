@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "id": "TASK-EXAMPLE",
+  "status": "queued",
+  "goal": "",
+  "acceptance_criteria": [],
+  "risk": {
+    "level": "low",
+    "reason": ""
+  },
+  "owner": "",
+  "dependencies": [],
+  "write_paths": [],
+  "base_commit": "",
+  "diff_hash": "",
+  "evidence_refs": [],
+  "checks": [],
+  "fix_review_cycles": 0,
+  "next_action": "",
+  "restart_condition": "",
+  "approval": null,
+  "audit": null,
+  "record_type": "task",
+  "created_at": null,
+  "updated_at": null
+}
