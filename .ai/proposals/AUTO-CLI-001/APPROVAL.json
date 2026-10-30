@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "id": "AUTO-CLI-001",
+  "approved_patch_sha256": "32586f64a63d55ef22a4a198126350921db89f21412e05025afed67b6036ac93",
+  "approval_source": "explicit user chat approval in current session",
+  "approval_scope": "apply approved repository patch and configure private Codex Cloud Install script",
+  "approval_recorded_at": "2026-10-30T15:59:21.285870+00:00",
+  "base_main_commit": "36a37258a9baa48ae70925fbcbda6d20952ab311",
+  "repository_patch_status": "applied_uncommitted",
+  "cloud_install_script_status": "pending_deployment"
+}
