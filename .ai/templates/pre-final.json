@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "id": "EXAMPLE-PRE-FINAL",
+  "status": "template",
+  "acceptance_evidence": null,
+  "diff_hash": null,
+  "checks": null,
+  "limitations": null,
+  "created_at": null,
+  "updated_at": null
+}

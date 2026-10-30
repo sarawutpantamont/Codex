@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "id": "EXAMPLE-CHECKPOINT",
+  "status": "template",
+  "task_id": null,
+  "head": null,
+  "branch": null,
+  "dirty_paths": null,
+  "safe_patch_ref": null,
+  "safe_patch_hash": null,
+  "commands": null,
+  "results": null,
+  "limitations": null,
+  "next_action": null,
+  "created_at": null,
+  "updated_at": null
+}

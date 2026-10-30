@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "id": "EXAMPLE-BLOCKED-CASE",
+  "status": "template",
+  "task_id": null,
+  "expected": null,
+  "actual": null,
+  "reproduction": null,
+  "environment": null,
+  "attempts": null,
+  "fix_review_cycles": null,
+  "evidence_refs": null,
+  "restart_condition": null,
+  "issue_url": null,
+  "created_at": null,
+  "updated_at": null
+}

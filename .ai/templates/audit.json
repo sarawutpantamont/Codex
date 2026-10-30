@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "id": "EXAMPLE-AUDIT",
+  "status": "template",
+  "model": null,
+  "diff_hash": null,
+  "decision": null,
+  "findings": null,
+  "diff_verification_log": null,
+  "created_at": null,
+  "updated_at": null
+}

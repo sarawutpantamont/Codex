@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "id": "TASK-001",
+  "status": "audited",
+  "goal": "Install the approved reusable orchestrator template",
+  "acceptance_criteria": [
+    "CLI validation and regression checks pass",
+    "Auditor reviews exact implementation",
+    "Draft PR exists; main implementation is not merged"
+  ],
+  "risk": {
+    "level": "medium",
+    "reason": "New local state tools; no production data or external model dispatch"
+  },
+  "owner": "master",
+  "dependencies": [],
+  "write_paths": [
+    ".ai/",
+    "tools/",
+    "tests/",
+    "AGENTS.md",
+    "README.md",
+    ".github/"
+  ],
+  "base_commit": "a2b449acfdf0af9a0e2d8db52dbb79e15b8fa52b",
+  "diff_hash": null,
+  "evidence_refs": [],
+  "checks": [
+    {
+      "command": "python tools/orchestrator.py validate",
+      "result": "passed"
+    },
+    {
+      "command": "python -m unittest discover -s tests -v",
+      "result": "9 passed"
+    }
+  ],
+  "fix_review_cycles": 1,
+  "next_action": "Publish audited content and open draft PR; user decides merge",
+  "restart_condition": null,
+  "approval": {
+    "source": "explicit_user_chat",
+    "scope": "initial installation of uploaded DESIGN.md and record-template.json"
+  },
+  "audit": {
+    "decision": "passed",
+    "model": "Codex GPT-6.1 Sol",
+    "manifest_sha256": "58de016faf9c3d413509696053b7e361009f840798a86377e8e97ba44f590e16"
+  },
+  "record_type": "task",
+  "created_at": "2026-10-30T08:23:15.044938+00:00",
+  "updated_at": "2026-10-30T08:23:15.044938+00:00"
+}

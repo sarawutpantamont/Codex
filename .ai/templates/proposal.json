@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "id": "EXAMPLE-PROPOSAL",
+  "status": "template",
+  "targets": null,
+  "rationale": null,
+  "impact": null,
+  "test_plan": null,
+  "base_commit": null,
+  "patch_hash": null,
+  "approval_ref": null,
+  "created_at": null,
+  "updated_at": null
+}

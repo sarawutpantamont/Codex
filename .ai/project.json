@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "project_id": "orchestrator-template",
+  "version": "0.1.0",
+  "main_branch": "main",
+  "checks": [
+    "python tools/orchestrator.py validate",
+    "python -m unittest discover -s tests -v"
+  ],
+  "protected_paths": [
+    "AGENTS.md",
+    ".ai/project.json",
+    ".ai/roles/",
+    ".ai/procedures/",
+    ".ai/skills/",
+    "tools/",
+    ".github/workflows/"
+  ],
+  "review_models": {
+    "preferred": "Claude Code Opus 5.5",
+    "fallback": "GPT-6.1 Sol or verified higher approved model",
+    "availability": "must verify at runtime"
+  },
+  "risk_examples": {
+    "low": "documentation typo",
+    "medium": "local state CLI",
+    "high": "authorization, credentials, financial calculations, migrations"
+  }
+}

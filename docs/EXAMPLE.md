@@ -1,0 +1,3 @@
+# Synthetic invoice workflow
+IMPORT-001 is high risk because quantities affect inventory. Implement a synthetic parser regression, dispatch isolated support and opposition, pass results to judge, then prepare pre-final for an independent auditor. After a verified revision, commit to a task branch and open draft PR; user merges.
+If the second revision fails, preserve case, safe diff and issue ID. Continue an independent UI task. A new model reads the checkpoint and repeats the recorded command. Missing local evidence means reproduction is not yet complete. After fixing the cause, propose a preventive rule as an inert patch and await explicit chat approval.
