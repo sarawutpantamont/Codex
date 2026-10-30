@@ -3,9 +3,14 @@
   "record_type": "checkpoint",
   "id": "CHECKPOINT-TASK-001",
   "task_id": "TASK-001",
-  "head": "a2b449acfdf0af9a0e2d8db52dbb79e15b8fa52b",
-  "branch": "codex/orchestrator-template",
-  "dirty_paths": [],
+  "head": "e70c73156abfb831a384812f8eb27a945e7524e6",
+  "branch": "codex/main-checkout",
+  "verified_main_commit": "e70c73156abfb831a384812f8eb27a945e7524e6",
+  "dirty_paths": [
+    ".ai/cases/TASK-001.json",
+    ".ai/cases/CHECKPOINT-TASK-001.json",
+    ".ai/state/active.json"
+  ],
   "updated_at": "2026-10-30T08:24:21.695128+00:00",
   "checks": [
     {
@@ -14,14 +19,16 @@
     },
     {
       "command": "python -m unittest discover -s tests -v",
-      "result": "9 passed"
+      "result": "14/14 passed",
+      "historical_result": "9 passed"
     }
   ],
   "audit_ref": ".ai/reports/AUDIT.md",
-  "next_action": "Inspect draft PR and its actual head; user decides merge. Run validate/tests/resume in a fresh checkout.",
+  "next_action": "Resolved after PR #1 and PR #2 merged; verified main separately from checkout snapshot",
   "limitations": [
-    "head records pre-publication base; publication changes HEAD and must be reconciled",
-    "Claude integration and branch protections are not configured",
-    "Remote Actions status is not yet confirmed"
+    "Ruleset and GitHub Checks verified",
+    "Claude successfully called a real model in the tested Cloud task",
+    "CLI automatic installation in a new task remains unverified",
+    "head and branch remain the actual checkout snapshot; verified_main_commit records main independently"
   ]
 }
