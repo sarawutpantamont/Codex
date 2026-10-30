@@ -16,6 +16,9 @@ class StateTests(unittest.TestCase):
         self.root = Path(self.tmp.name)
         for p in ['.ai/project.json','.ai/state/active.json','.ai/cases/TASK-001.json']:
             m.save(self.root/p, m.load(SOURCE/p))
+        active = m.load(self.root/'.ai/state/active.json')
+        active.update(task_id='TASK-001', checkpoint='.ai/cases/CHECKPOINT-TASK-001.json')
+        m.save(self.root/'.ai/state/active.json', active)
         task = m.load(self.root/'.ai/cases/TASK-001.json')
         task.update(status='checking', fix_review_cycles=0)
         m.save(self.root/'.ai/cases/TASK-001.json', task)

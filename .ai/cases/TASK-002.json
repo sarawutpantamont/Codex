@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "record_type": "task",
+  "id": "TASK-002",
+  "status": "pre_final",
+  "goal": "Retire third-party Claude Code reviewer setup and prefer native GPT-6.1 Sol subagents",
+  "acceptance_criteria": [
+    "Live reviewer rules and project configuration prefer GPT-6.1 Sol",
+    "Repository no longer offers Claude CLI installation or dispatch scripts",
+    "Historical Claude proposals remain intact as audit records",
+    "Validation and remaining unit tests pass",
+    "Cloud environment cleanup is identified separately from the repository change"
+  ],
+  "risk": {
+    "level": "high",
+    "reason": "Changes reviewer routing and retires credential-using third-party execution"
+  },
+  "owner": "master",
+  "dependencies": [
+    "TASK-001"
+  ],
+  "write_paths": [
+    "AGENTS.md",
+    ".ai/project.json",
+    ".ai/cases/TASK-002.json",
+    ".ai/cases/CHECKPOINT-TASK-002.json",
+    ".ai/state/active.json",
+    "README.md",
+    "tests/test_orchestrator.py",
+    "tools/claude_review.py",
+    "tools/install_claude_cli.sh",
+    "tests/test_claude_review.py"
+  ],
+  "base_commit": "a923fc10d293f25731621e00a2c217b2ca627f0b",
+  "diff_hash": "b4e06fbce8470fc702d55769b7be123d020500fd29933ba9a852498f1778aaf7",
+  "diff_hash_scope": "git diff --binary of live reviewer rules, README, tests and retired Claude scripts; excludes task state records",
+  "evidence_refs": [
+    "User instruction in current chat to cancel Claude Code subagent and use GPT-6.1 Sol"
+  ],
+  "checks": [
+    {
+      "command": "python tools/orchestrator.py validate",
+      "result": "passed; 2 tasks"
+    },
+    {
+      "command": "python -m unittest discover -s tests -v",
+      "result": "9/9 passed"
+    },
+    {
+      "command": "git diff --check",
+      "result": "passed"
+    }
+  ],
+  "fix_review_cycles": 0,
+  "next_action": "Complete isolated review, validation and audit; open draft PR. Remove the Claude Install script and token binding from the private Cloud environment.",
+  "restart_condition": null,
+  "approval": {
+    "source": "explicit_user_chat",
+    "scope": "Cancel Claude Code as a third-party subagent and use GPT-6.1 Sol instead"
+  },
+  "review": {
+    "requested_model": "gpt-6.1-sol",
+    "routing_evidence": "Support, Opposition and Judge were created with explicit gpt-6.1-sol model overrides",
+    "runtime_model_introspection": "unavailable; do not claim independently introspected model identity",
+    "support": "repository behavior passed; Cloud cleanup remains pending",
+    "opposition": "repository behavior passed with bounded limitations; Cloud cleanup remains pending",
+    "judge": "revision_required until final review record, checkpoint, manifest and independent Auditor certification are complete"
+  },
+  "limitations": [
+    "Repository rules choose native GPT-6.1 Sol subagents; the repository does not contain a standalone model dispatcher",
+    "Private Cloud Install script and Claude token binding have not been removed or verified",
+    "Historical Claude proposals remain as audit records"
+  ],
+  "audit": null,
+  "created_at": "2026-10-30T16:33:31Z",
+  "updated_at": "2026-10-30T16:36:57Z"
+}

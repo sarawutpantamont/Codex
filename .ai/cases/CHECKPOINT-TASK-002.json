@@ -1,0 +1,26 @@
+{
+  "head": "a923fc10d293f25731621e00a2c217b2ca627f0b",
+  "branch": "codex/sol-primary-reviewer",
+  "dirty_paths": [
+    "A  .ai/cases/CHECKPOINT-TASK-002.json",
+    "A  .ai/cases/TASK-002.json",
+    "M  .ai/project.json",
+    "M  .ai/state/active.json",
+    "M  AGENTS.md",
+    "M  README.md",
+    "D  tests/test_claude_review.py",
+    "M  tests/test_orchestrator.py",
+    "D  tools/claude_review.py",
+    "D  tools/install_claude_cli.sh"
+  ],
+  "schema_version": 1,
+  "record_type": "checkpoint",
+  "id": "CHECKPOINT-TASK-002",
+  "task_id": "TASK-002",
+  "updated_at": "2026-10-30T16:38:15.099753+00:00",
+  "next_action": "Repository switch verified locally; independent Auditor must certify final diff, then draft PR. Private Cloud Claude install script and token binding remain for user removal.",
+  "limitations": [
+    "Working file bytes are not saved by this checkpoint.",
+    "Review paths and next_action for privacy before publishing."
+  ]
+}

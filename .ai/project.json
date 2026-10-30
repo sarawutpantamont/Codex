@@ -17,8 +17,8 @@
     ".github/workflows/"
   ],
   "review_models": {
-    "preferred": "Claude Code Opus 5.5",
-    "fallback": "GPT-6.1 Sol or verified higher approved model",
+    "preferred": "GPT-6.1 Sol",
+    "fallback": "verified higher approved Codex model",
     "availability": "must verify at runtime"
   },
   "risk_examples": {
