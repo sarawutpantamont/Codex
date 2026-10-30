@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "id": "CONNECT-002",
+  "status": "awaiting_chat_approval_and_external_setup",
+  "cli_version": "2.1.314",
+  "authentication": "not_logged_in",
+  "branch_protection": "admin_write_unavailable",
+  "rulesets_observed": [],
+  "existing_legacy_protection": "unknown_403",
+  "checks": [
+    "4 mock-based adapter tests passed",
+    "git apply --check passed",
+    "ruleset JSON parsed",
+    "validate check app 15368 verified from live GitHub check runs"
+  ],
+  "next_action": "Approve patch in chat; complete browser login in terminal; repository owner imports ruleset through Settings/Rules; then recheck live state.",
+  "privacy": "No login URL, auth code, credential path or secret stored here."
+}
