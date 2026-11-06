@@ -22,10 +22,12 @@ self.addEventListener('fetch', event => {
     }));
     return;
   }
-  if (ASSETS.some(path => new URL(path, self.registration.scope).href === url.href)) {
+  const assetUrl = new URL(url.href);
+  assetUrl.search = '';
+  if (ASSETS.some(path => new URL(path, self.registration.scope).href === assetUrl.href)) {
     event.respondWith((async () => {
       const cache = await caches.open(CACHE_NAME);
-      return (await cache.match(event.request)) || fetch(event.request);
+      return (await cache.match(assetUrl.href)) || fetch(event.request);
     })());
   }
 });
