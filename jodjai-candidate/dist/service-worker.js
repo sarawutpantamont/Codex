@@ -1,4 +1,4 @@
-const CACHE_NAME = 'jodjai-shell-rev02-1';
+const CACHE_NAME = 'jodjai-shell-rev02-2';
 const ASSETS = ['./', './index.html', './style.css', './app.js', './core.js', './manifest.json', './icon-192x192.png', './icon-512x512.png'];
 self.addEventListener('install', event => event.waitUntil((async () => {
   const cache = await caches.open(CACHE_NAME);
