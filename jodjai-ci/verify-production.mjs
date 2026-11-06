@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { chromium } from 'playwright';
 
-const url = 'https://jodjai-daily-wallet.honesttick.chatgpt.site/';
+const url = 'https://jodjai-daily-wallet.theprimecent.chatgpt.site/';
 const browser = await chromium.launch();
 try {
   const context = await browser.newContext({ viewport: { width: 390, height: 844 }, acceptDownloads: true });
@@ -36,7 +36,7 @@ try {
   await page.locator('#main-app').waitFor({ state: 'visible' });
   assert.match(await page.locator('#today-total').textContent(), /120.25/);
   await page.locator('[data-tab="settings"]').click();
-  assert.match(await page.locator('.footer-note').textContent(), /rev02\.[12]/);
+  assert.match(await page.locator('.footer-note').textContent(), /rev02\.[123]/);
   const downloadPromise = page.waitForEvent('download');
   await page.locator('#export-btn').click();
   const download = await downloadPromise;

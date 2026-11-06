@@ -11,3 +11,7 @@
 ## rev02.2 — 2026-11-06
 
 เปิดแอปโดยตรงโดยไม่ต้องใช้ PIN; คงข้อมูลรายจ่าย งบประมาณ ธีม และ PIN เดิมในพื้นที่จัดเก็บเพื่อความเข้ากันได้กับเวอร์ชันก่อนหน้า
+
+## rev02.3 — prepared 2026-11-06, pending approval
+
+Local-only data safety: complete checksummed JSON export/import with non-destructive merge; keep first and seven recent local snapshots before edits; backup verification before user-requested update activation. Offline shell remains on its original origin and refuses redirected update assets. No account, server storage or automatic cross-origin recovery. Existing data formats and legacy PIN keys remain unchanged. A file kept outside the browser is required to recover after browser data loss or a forced new-origin first visit.

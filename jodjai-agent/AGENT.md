@@ -4,7 +4,7 @@ This on-demand Codex agent maintains JodJai only when the user requests a specif
 
 ## Project
 
-- Production: https://jodjai-daily-wallet.honesttick.chatgpt.site/
+- Production: https://jodjai-daily-wallet.theprimecent.chatgpt.site/
 - Site project ID: appgprj_6adb6e21a17481918f0bd037622f00f7
 - Coordination repository: sarawutpantamont/Codex.
 - Application source lives in the Site source repository, not currently in the Codex GitHub repository. Inspect the live Site and source revision before every task. Preserve the current public audience and URL. Never discard user changes or touch unrelated projects.
@@ -22,3 +22,9 @@ This on-demand Codex agent maintains JodJai only when the user requests a specif
 ## Invoke
 
 In a new Codex conversation, ask: “Read jodjai-agent/AGENT.md in sarawutpantamont/Codex and maintain JodJai. My requested patch is: …” No continuous service or scheduler is installed by this document.
+
+## Local-only data safety — rev02.3
+
+The user chose device-local data and separately retained backup files, without cloud accounts. Before and after release, compare Sites identity, origin and audience to jodjai-candidate/release-target.json and run release-guard.mjs. Do not silently update that target to accommodate a redirect. A hosting preflight observes current routing but cannot guarantee future provider behavior. Explain any such limit and halt if origin differs. Use jodjai-candidate/DATA-SAFETY.md for the exact protections and limits. Keep independently retained JSON backups; copies in browser storage alone do not survive browser deletion or arbitrary origin changes. Do not claim recovery of the user's already-missing historical data.
+
+Candidate checks are now implemented in .github/workflows/jodjai-candidate.yml. Edit the candidate snapshot on a PR, reconcile it against the live Site source, run the exact candidate checks (including backups, prior-version upgrade, redirect simulation and cross-origin file restore) and report source hashes before requesting Approve deployment. Ensure the Site archive contains those exact tested dist bytes. The versioned application entry is app-rev023.js; app.js is retained as the legacy rev02.2 entry. Avoid reverting the versioned entry to a cached filename. The production smoke workflow is post-publication evidence, not the candidate gate.
