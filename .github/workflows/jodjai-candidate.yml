@@ -23,17 +23,25 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
       - name: Record tested source
-        run: git rev-parse HEAD
+        run: |
+          git rev-parse HEAD
+          sha256sum dist/*.js dist/*.html
       - name: Validate JavaScript and data compatibility
         run: |
           node --check dist/app.js
+          node --check dist/app-rev023.js
+          node --check dist/backup.js
           node --check dist/core.js
           node --check dist/service-worker.js
           node test.mjs
+          node backup-test.mjs
+          node release-guard-test.mjs
+          node release-guard.mjs
       - name: Prepare browser and icons
         run: |
           for icon in dist/*.png.base64; do base64 --decode "$icon" > "${icon%.base64}"; done
@@ -46,3 +54,4 @@ jobs:
           trap 'kill "$server_pid" || true' EXIT
           for i in $(seq 1 20); do curl --fail --silent http://127.0.0.1:8080/ > /dev/null && break; sleep 1; done
           node browser-test.cjs
+          node browser-safety-test.cjs
