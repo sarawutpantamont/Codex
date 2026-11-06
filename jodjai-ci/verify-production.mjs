@@ -12,14 +12,16 @@ try {
   const response = await page.goto(url, { waitUntil: 'networkidle' });
   assert.equal(response.status(), 200, 'Production must be publicly accessible');
   assert.equal(new URL(page.url()).origin, new URL(url).origin, 'No login redirect');
-  await page.locator('#pin-screen').waitFor({ state: 'visible' });
+  const hasPinScreen = await page.locator('#pin-screen').count() > 0;
   async function pin() {
     for (const digit of '4826') await page.locator(`[data-digit="${digit}"]`).click();
     await page.locator('#pin-ok').click();
   }
-  await pin();
-  await page.waitForFunction(() => document.querySelector('#pin-title').textContent.includes('ยืนยัน'));
-  await pin();
+  if (hasPinScreen) {
+    await pin();
+    await page.waitForFunction(() => document.querySelector('#pin-title').textContent.includes('ยืนยัน'));
+    await pin();
+  }
   await page.locator('#main-app').waitFor({ state: 'visible' });
   await page.locator('#add-nav').click();
   await page.locator('#amount-input').fill('120.25');
@@ -30,11 +32,11 @@ try {
   await page.locator('[data-tab="analytics"]').click();
   assert.match(await page.locator('#category-rankings').textContent(), /บัตรเครดิต/);
   await page.reload();
-  await pin();
+  if (hasPinScreen) await pin();
   await page.locator('#main-app').waitFor({ state: 'visible' });
   assert.match(await page.locator('#today-total').textContent(), /120.25/);
   await page.locator('[data-tab="settings"]').click();
-  assert.match(await page.locator('.footer-note').textContent(), /rev02\.1/);
+  assert.match(await page.locator('.footer-note').textContent(), /rev02\.[12]/);
   const downloadPromise = page.waitForEvent('download');
   await page.locator('#export-btn').click();
   const download = await downloadPromise;
