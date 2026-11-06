@@ -1,0 +1,48 @@
+name: JodJai candidate verification
+on:
+  pull_request:
+    paths:
+      - 'jodjai-candidate/**'
+      - '.github/workflows/jodjai-candidate.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'jodjai-candidate/**'
+      - '.github/workflows/jodjai-candidate.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  candidate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: jodjai-candidate
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Record tested source
+        run: git rev-parse HEAD
+      - name: Validate JavaScript and data compatibility
+        run: |
+          node --check dist/app.js
+          node --check dist/core.js
+          node --check dist/service-worker.js
+          node test.mjs
+      - name: Prepare browser and icons
+        run: |
+          for icon in dist/*.png.base64; do base64 --decode "$icon" > "${icon%.base64}"; done
+          npm install --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Test candidate application in an isolated browser
+        run: |
+          python3 -m http.server 8080 --directory dist > /tmp/jodjai-http.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" || true' EXIT
+          for i in $(seq 1 20); do curl --fail --silent http://127.0.0.1:8080/ > /dev/null && break; sleep 1; done
+          node browser-test.cjs
