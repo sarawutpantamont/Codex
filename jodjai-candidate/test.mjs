@@ -1,0 +1,22 @@
+import assert from 'node:assert/strict';
+import {normalizeDate,validateTransaction,exportCSV,importCSV,parseCSV,totals,localDay} from './dist/core.js';
+const tx={id:'1',amount:12.25,category:'food',note:'มื้อเที่ยง, "อร่อย"\nอีกบรรทัด',date:'2026-10-23T12:00:00.000Z'};
+assert.deepEqual(importCSV(exportCSV([tx]),[]).transactions,[tx]);
+for(const note of ['=SUM(A1:A2)','+test','-test','@test',"'=SUM(A1)",'\tformula','  =calc'])assert.equal(importCSV(exportCSV([{...tx,note}]),[]).transactions[0].note,note);
+assert.equal(importCSV(exportCSV([tx,tx]),[tx]).duplicates,2);
+assert.equal(normalizeDate('23/10/2569 12:00:00'),tx.date);
+assert.equal(normalizeDate('23/10/2569'),tx.date);
+assert.equal(normalizeDate('2026-02-30'),null);
+assert.equal(normalizeDate('31/02/2569'),null);
+assert.equal(validateTransaction({...tx,amount:Infinity}),null);
+assert.equal(validateTransaction({...tx,amount:-5}),null);
+assert.equal(validateTransaction({...tx,category:'unknown'}).category,'other');
+assert.equal(importCSV('ID,Date,Category,Amount,Note\n2,invalid,food,3,note',[]).skipped,1);
+assert.throws(()=>parseCSV('a,"unclosed'));
+assert.deepEqual(totals([{...tx,amount:.1},{...tx,amount:.2}],new Date(tx.date)),{today:.3,month:.3});
+console.log('Core: CSV escaping, formula protection, duplicate import, Thai dates, invalid records and exact totals passed.');
+
+const credit={...tx,id:'credit-card-rev02',category:'credit_card'};
+assert.equal(validateTransaction(credit).category,'credit_card');
+assert.deepEqual(importCSV(exportCSV([credit]),[]).transactions,[credit]);
+console.log('rev02 credit card validation and CSV round trip passed.');
