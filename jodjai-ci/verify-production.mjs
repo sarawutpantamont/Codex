@@ -37,7 +37,7 @@ try {
   const downloadPromise = page.waitForEvent('download');
   await page.locator('#export-btn').click();
   const download = await downloadPromise;
-  const csv = await import('node:fs/promises').then(fs => fs.readFile(download.path(), 'utf8'));
+  const csv = await import('node:fs/promises').then(fs => fs.readFile(await download.path(), 'utf8'));
   assert.match(csv, /credit_card/);
   assert.deepEqual(errors, []);
   assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
